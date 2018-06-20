@@ -22,3 +22,5 @@ while True:
     if input_state == False:
         timer(1500, ledBlue, ledGreen)
         timer(300, ledGreen, ledBlue)
+        ledGreen.off()
+        ledBlue.off()
