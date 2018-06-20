@@ -4,11 +4,9 @@ import time
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-input_state = GPIO.input(17)
 
 ledGreen = LED(15)
 ledBlue = LED(18)
-
 def timer(t, ledLightOn, ledLightOff):
     ledLightOn.on()
     ledLightOff.off()
@@ -19,6 +17,8 @@ def timer(t, ledLightOn, ledLightOff):
         time.sleep(1)
         t -= 1
 
-if input_state == False:
-    timer(1500, ledBlue, ledGreen)
-    timer(300, ledGreen, ledBlue)
+while True:
+    input_state = GPIO.input(17)
+    if input_state == False:
+        timer(1500, ledBlue, ledGreen)
+        timer(300, ledGreen, ledBlue)
