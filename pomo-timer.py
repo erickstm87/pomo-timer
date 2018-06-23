@@ -7,6 +7,8 @@ GPIO.setup(17, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 ledGreen = LED(15)
 ledBlue = LED(18)
+text = input('hit enter or press the button to get to work')
+
 def timer(t, ledLightOn, ledLightOff):
     ledLightOn.on()
     ledLightOff.off()
@@ -19,7 +21,7 @@ def timer(t, ledLightOn, ledLightOff):
 
 while True:
     input_state = GPIO.input(17)
-    if input_state == False:
+    if input_state == False or text == '':
         timer(1500, ledBlue, ledGreen)
         timer(300, ledGreen, ledBlue)
         ledGreen.off()
